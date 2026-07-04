@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# API keys and other secrets
+config/secrets.yml
+secrets.json
+*.pem
+*.key
