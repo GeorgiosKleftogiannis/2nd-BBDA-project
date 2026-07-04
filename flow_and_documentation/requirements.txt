@@ -1,0 +1,8 @@
+pandas
+numpy
+psycopg2-binary
+sqlalchemy
+openmeteo_requests
+requests
+requests-cache
+retry-requests
