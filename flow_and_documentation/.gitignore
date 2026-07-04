@@ -224,5 +224,5 @@ secrets.json
 *.key
 
 # Jupyter files
-.ipynd_checkpoints
+.ipynd_checkpoints/
 
