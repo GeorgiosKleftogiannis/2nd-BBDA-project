@@ -1,0 +1,5 @@
+SHELL=/bin/sh
+PATH=/usr/local/bin:/usr/bin:/bin
+
+# Run ETL pipeline every hour
+0 * * * * root cd /app && python /app/etl_pipeline.py >> /var/log/etl.log 2>&1
