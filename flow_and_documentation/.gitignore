@@ -222,3 +222,7 @@ config/secrets.yml
 secrets.json
 *.pem
 *.key
+
+# Jupyter files
+.ipynd_checkpoints
+
