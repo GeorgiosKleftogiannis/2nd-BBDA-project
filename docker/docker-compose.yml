@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: weatherdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d weatherdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  etl:
+    build: .
+    container_name: weather_etl
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - shared_tmp:/tmp
+    environment:
+      DB_HOST: db
+      DB_NAME: weatherdb
+      DB_USER: postgres
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      DB_TABLE: weather_data
+    restart: unless-stopped
+
+volumes:
+  pg_data:
+  shared_tmp:
