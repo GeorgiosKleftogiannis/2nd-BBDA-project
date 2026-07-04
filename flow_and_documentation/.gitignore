@@ -226,3 +226,5 @@ secrets.json
 # Jupyter files
 .ipynd_checkpoints/
 
+# cached files
+.cache.sqlite
